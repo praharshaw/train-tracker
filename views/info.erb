@@ -6,6 +6,7 @@
 	<div class="row dashboard">
 		<div class="span4">
 			<h2>Details</h2>
+			<p><strong>Train Name:</strong> <%= @train_name %></p>
 			<p><strong>Train Number:</strong> <%= @train_num %></p>
 			<p><strong>Train Date:</strong> <%= @train_date_reversed %></p>
 		</div>
@@ -23,7 +24,31 @@
 		<div class="span4">
 			<h2>Next Stn.</h2>
 			<p>The next station is <strong><%= @next_stn %></strong> (<%= @stations_hash[@next_stn.strip] %>)</p>
-			<p>The weather forecast there is: <%= @weather %></p>
+		</div>
+	</div>
+
+	<div class="row dashboard">
+		<div class="span4">
+			<h2>Expected Delay</h2>
+			<p>
+				<% if @delay_mins == 0 %>
+					The train is running on time!
+				<% else %>
+					The train has been delayed by about <%= @delay_mins %> min
+				<% end %>
+			</p>
+		</div>
+		<div class="span4">
+			<h2>Weather Forecast</h2>
+			<p>The weather at <strong><%= @stations_hash[@next_stn].capitalize %></strong> is <strong><%= @weather_forecast %></strong></p>
+		</div>
+	</div>
+
+	<div class="row dashboard">
+		<div class="span4">
+			<h2>Emergency Nos.</h2>
+			<p><strong>Police </strong>088888 88888</p>
+			<p><strong>Ambulance </strong>+91 98181 91961</p>
 		</div>
 	</div>
 </div>
