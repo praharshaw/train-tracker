@@ -18,12 +18,16 @@
 
 	<div class="row dashboard">
 		<div class="span4">
-			<h2>Prev Stn</h2>
-			<p>You just crossed <strong><%= @prev_stn %></strong> (<%= @stations_hash[@prev_stn.strip] %>)</p>
+			<h2>Last Station</h2>
+			<% if @stations_hash.keys.include? @prev_stn %>
+				<p>You just crossed <strong><%= @prev_stn %></strong> (<%= @stations_hash[@prev_stn] %>)</p>
+			<% else %>
+				<p>Your train hasn't started yet.</p>
+			<% end %>
 		</div>
 		<div class="span4">
-			<h2>Next Stn.</h2>
-			<p>The next station is <strong><%= @next_stn %></strong> (<%= @stations_hash[@next_stn.strip] %>)</p>
+			<h2>Next Station</h2>
+			<p>The next station is <strong><%= @next_stn %></strong> (<%= @stations_hash[@next_stn] %>)</p>
 		</div>
 	</div>
 
@@ -47,14 +51,14 @@
 	<div class="row dashboard">
 		<div class="span4">
 			<h2>Emergency Nos.</h2>
-			<p>Emergency numbers for <strong><%= @stations_hash[@next_stn.strip] %></strong> are:</p>
+			<p>Emergency numbers for <strong><%= @stations_hash[@next_stn] %></strong> are:</p>
 			<p><strong>Police </strong>088888 88888</p>
 			<p><strong>Ambulance </strong>+91 98181 91961</p>
 		</div>
 		<div class="span4">
 			<h2>Services</h2>
-			<p><a class="btn btn-primary" href="http://www.railtourismindia.com/cgi-bin/dev1.dll/irctc/booking/car.do?click=true&screen=FromTrainType">Cab</a></p>
-			<p><a class="btn btn-primary" href="http://www.railtourismindia.com/cgi-bin/hotel.dll/irctc/services/home.do">Hotel</a></p>
+			<p><a class="btn btn-inverse" href="http://www.railtourismindia.com/cgi-bin/dev1.dll/irctc/booking/car.do?click=true&screen=FromTrainType">Cab</a></p>
+			<p><a class="btn btn-inverse" href="http://www.railtourismindia.com/cgi-bin/hotel.dll/irctc/services/home.do">Hotel</a></p>
 		</div>
 	</div>
 </div>

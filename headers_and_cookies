@@ -4,10 +4,10 @@ Content-Length: 19715
 Content-Type: text/html; charset=utf-8
 Server: Microsoft-IIS/7.0
 X-AspNet-Version: 2.0.50727
-Set-Cookie: ASP.NET_SessionId=yrrxhm55nktwiq2whkltwn55; path=/; HttpOnly
+Set-Cookie: ASP.NET_SessionId=t43gog45enjcmbjjoz2vx0y5; path=/; HttpOnly
 X-Powered-By: ASP.NET
-Date: Sun, 14 Jul 2013 05:00:35 GMT
+Date: Sun, 14 Jul 2013 06:18:43 GMT
 X-Cache: MISS from inventum
 Via: 1.0 inventum (squid/3.1.9)
-Connection: keep-alive
+Connection: close
 
