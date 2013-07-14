@@ -77,16 +77,15 @@ helpers do
 
     begin
       json = JSON.load text_dump
+
+      @next_stn = json[json["keys"][0]]["station_updates"].reject { |k,v| v["status"] == "departed" }.keys.first
+      @prev_stn = json[json["keys"][0]]["station_updates"].reject { |k,v| v["status"] == "not_reached" }.keys.last
+      @prev_stn = (@prev_stn.nil? or @prev_stn == "nil" or @prev_stn == "") ? "Your train hasn't started yet" : @prev_stn
+
+      @delay_mins = json[json["keys"][0]]["station_updates"]["#{@prev_stn}"]["delay_mins"]
     rescue
       erb :error
     end
-
-
-    @next_stn = json[json["keys"][0]]["station_updates"].reject { |k,v| v["status"] == "departed" }.keys.first
-    @prev_stn = json[json["keys"][0]]["station_updates"].reject { |k,v| v["status"] == "not_reached" }.keys.last
-    @prev_stn = (@prev_stn.nil? or @prev_stn == "nil" or @prev_stn == "") ? "Your train hasn't started yet" : @prev_stn
-
-    @delay_mins = json[json["keys"][0]]["station_updates"]["#{@prev_stn}"]["delay_mins"]
   end
 
   def weather_distance_api
@@ -108,7 +107,11 @@ helpers do
       weather_text = `curl 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D#{next_woeid}&format=json&diagnostics=true'`
       weather_hash = JSON.load(weather_text)
 
-      forecast = weather_hash["query"]["results"]["channel"]["item"]["forecast"][0]["text"]
+      begin
+        forecast = weather_hash["query"]["results"]["channel"]["item"]["forecast"][0]["text"]
+      rescue
+        erb :error
+      end
 
       return [forecast, distance]
     end
