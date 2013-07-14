@@ -1,8 +1,4 @@
-body {
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-}
+body { margin-right: auto; margin-left: auto; text-align: center; }
 #nav { list-style-type: none; }
 #nav li { display: inline-block; margin: 10px; }
 .navbar .nav,
@@ -16,9 +12,5 @@ body {
 section { margin-top: 20px; }
 h1 { margin-bottom: 30px; }
 .navbar-inner {text-align:center;}
-#train-details, #target-destination, #prev-station, #next-station {
-	background-color: #ddd;
-	max-width: 400px;
-	margin-right: auto;
-	margin-left: auto;
+.dashboard {
 }
